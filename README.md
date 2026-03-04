@@ -109,21 +109,7 @@ Replace it with deterministic cost-aware scheduling:
 
 ---
 
-### Step 4. Scheduler Integration
-
-If scheduler modules exist inside:
-
-```
-scheduler/
-vmMigration/
-```
-
-Modify migration decision pipeline to follow:
-
-```
-Trend Analyzer → Recommendation Engine → Cost Optimizer → Migration Scheduler
-
-## Testing Procedure
+### Step 4. Testing Procedure
 
 After coding:
 
