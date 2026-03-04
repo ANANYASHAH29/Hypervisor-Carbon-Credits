@@ -1,0 +1,987 @@
+{
+  "model_metrics": {
+    "accuracy": 0.9148,
+    "cv_mean": 0.9194,
+    "cv_std": 0.0095,
+    "total_rows": 17419
+  },
+  "feature_importance": {
+    "credit": 0.5605,
+    "carbonIntensity": 0.2854,
+    "cpu": 0.1541
+  },
+  "recommendation_counts": {
+    "WAIT": 8291,
+    "MONITOR": 5444,
+    "MIGRATE_SOON": 2583,
+    "MIGRATE_NOW": 1101
+  },
+  "wait_time_averages": {
+    "MIGRATE_NOW": 0.0,
+    "MIGRATE_SOON": 22.9,
+    "MONITOR": 41.8,
+    "WAIT": 76.5
+  },
+  "timeline": [
+    {
+      "carbonIntensity": 56.0,
+      "credit": 4.12,
+      "cpu": 0.801,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.327
+    },
+    {
+      "carbonIntensity": 55.0,
+      "credit": 24.68,
+      "cpu": 0.506,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.34
+    },
+    {
+      "carbonIntensity": 56.0,
+      "credit": 2.67,
+      "cpu": 0.215,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.321
+    },
+    {
+      "carbonIntensity": 56.0,
+      "credit": -19.09,
+      "cpu": 0.376,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.449
+    },
+    {
+      "carbonIntensity": 63.0,
+      "credit": -2.46,
+      "cpu": 0.991,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.298
+    },
+    {
+      "carbonIntensity": 62.0,
+      "credit": 40.0,
+      "cpu": 0.089,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.201
+    },
+    {
+      "carbonIntensity": 73.0,
+      "credit": -20.32,
+      "cpu": 0.206,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.395
+    },
+    {
+      "carbonIntensity": 72.0,
+      "credit": 14.15,
+      "cpu": 0.328,
+      "recommendation": "WAIT",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.349
+    },
+    {
+      "carbonIntensity": 72.0,
+      "credit": -0.46,
+      "cpu": 0.205,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.352
+    },
+    {
+      "carbonIntensity": 76.0,
+      "credit": 25.26,
+      "cpu": 0.546,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.347
+    },
+    {
+      "carbonIntensity": 82.0,
+      "credit": 32.29,
+      "cpu": 0.265,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.33
+    },
+    {
+      "carbonIntensity": 82.0,
+      "credit": 40.0,
+      "cpu": 0.74,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.243
+    },
+    {
+      "carbonIntensity": 73.0,
+      "credit": 27.86,
+      "cpu": 0.81,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.322
+    },
+    {
+      "carbonIntensity": 70.0,
+      "credit": 4.8,
+      "cpu": 0.209,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.324
+    },
+    {
+      "carbonIntensity": 65.0,
+      "credit": 4.76,
+      "cpu": 0.071,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.255
+    },
+    {
+      "carbonIntensity": 68.0,
+      "credit": 24.4,
+      "cpu": 0.049,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.19
+    },
+    {
+      "carbonIntensity": 62.0,
+      "credit": 31.67,
+      "cpu": 0.197,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.319
+    },
+    {
+      "carbonIntensity": 58.0,
+      "credit": 2.4,
+      "cpu": 0.047,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.242
+    },
+    {
+      "carbonIntensity": 59.0,
+      "credit": 38.92,
+      "cpu": 0.527,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.389
+    },
+    {
+      "carbonIntensity": 57.0,
+      "credit": 9.38,
+      "cpu": 0.193,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.327
+    },
+    {
+      "carbonIntensity": 57.0,
+      "credit": 40.0,
+      "cpu": 0.398,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.246
+    },
+    {
+      "carbonIntensity": 55.0,
+      "credit": -0.1,
+      "cpu": 0.063,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.256
+    },
+    {
+      "carbonIntensity": 50.0,
+      "credit": 10.13,
+      "cpu": 0.524,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.338
+    },
+    {
+      "carbonIntensity": 48.0,
+      "credit": 12.51,
+      "cpu": 0.819,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.327
+    },
+    {
+      "carbonIntensity": 47.0,
+      "credit": 30.21,
+      "cpu": 0.929,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.237
+    },
+    {
+      "carbonIntensity": 44.0,
+      "credit": 25.9,
+      "cpu": 0.406,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.351
+    },
+    {
+      "carbonIntensity": 39.0,
+      "credit": 40.0,
+      "cpu": 0.986,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.141
+    },
+    {
+      "carbonIntensity": 36.0,
+      "credit": -4.99,
+      "cpu": 0.387,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.416
+    },
+    {
+      "carbonIntensity": 41.0,
+      "credit": 12.16,
+      "cpu": 0.464,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.363
+    },
+    {
+      "carbonIntensity": 42.0,
+      "credit": 6.17,
+      "cpu": 0.611,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.365
+    },
+    {
+      "carbonIntensity": 41.0,
+      "credit": -19.74,
+      "cpu": 0.305,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.451
+    },
+    {
+      "carbonIntensity": 41.0,
+      "credit": 23.91,
+      "cpu": 0.887,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.253
+    },
+    {
+      "carbonIntensity": 39.0,
+      "credit": 3.9,
+      "cpu": 0.084,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.302
+    },
+    {
+      "carbonIntensity": 44.0,
+      "credit": 40.0,
+      "cpu": 0.991,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.122
+    },
+    {
+      "carbonIntensity": 46.0,
+      "credit": 8.35,
+      "cpu": 0.864,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.328
+    },
+    {
+      "carbonIntensity": 48.0,
+      "credit": 4.75,
+      "cpu": 0.604,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.344
+    },
+    {
+      "carbonIntensity": 45.0,
+      "credit": -16.31,
+      "cpu": 0.176,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.375
+    },
+    {
+      "carbonIntensity": 42.0,
+      "credit": 25.81,
+      "cpu": 0.183,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.327
+    },
+    {
+      "carbonIntensity": 41.0,
+      "credit": -20.38,
+      "cpu": 0.593,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.469
+    },
+    {
+      "carbonIntensity": 37.0,
+      "credit": 39.36,
+      "cpu": 0.836,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.353
+    },
+    {
+      "carbonIntensity": 35.0,
+      "credit": -9.58,
+      "cpu": 0.433,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.417
+    },
+    {
+      "carbonIntensity": 31.0,
+      "credit": 33.65,
+      "cpu": 0.171,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.306
+    },
+    {
+      "carbonIntensity": 32.0,
+      "credit": 34.55,
+      "cpu": 0.293,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.36
+    },
+    {
+      "carbonIntensity": 39.0,
+      "credit": 13.51,
+      "cpu": 0.873,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.327
+    },
+    {
+      "carbonIntensity": 45.0,
+      "credit": -20.38,
+      "cpu": 0.862,
+      "recommendation": "MIGRATE_NOW",
+      "waitMinutes": 0,
+      "migrationFlag": 1,
+      "ml_prediction": 1,
+      "ml_probability": 0.866
+    },
+    {
+      "carbonIntensity": 47.0,
+      "credit": -3.47,
+      "cpu": 0.742,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.391
+    },
+    {
+      "carbonIntensity": 49.0,
+      "credit": 32.66,
+      "cpu": 0.853,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.317
+    },
+    {
+      "carbonIntensity": 49.0,
+      "credit": -19.61,
+      "cpu": 0.707,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.479
+    },
+    {
+      "carbonIntensity": 49.0,
+      "credit": 10.08,
+      "cpu": 0.321,
+      "recommendation": "WAIT",
+      "waitMinutes": 105,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.336
+    },
+    {
+      "carbonIntensity": 53.0,
+      "credit": 21.19,
+      "cpu": 0.364,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.333
+    },
+    {
+      "carbonIntensity": 53.0,
+      "credit": 10.71,
+      "cpu": 0.501,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.338
+    },
+    {
+      "carbonIntensity": 52.0,
+      "credit": 28.9,
+      "cpu": 0.038,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.186
+    },
+    {
+      "carbonIntensity": 60.0,
+      "credit": 6.68,
+      "cpu": 0.712,
+      "recommendation": "WAIT",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.35
+    },
+    {
+      "carbonIntensity": 60.0,
+      "credit": 2.06,
+      "cpu": 0.794,
+      "recommendation": "WAIT",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.334
+    },
+    {
+      "carbonIntensity": 68.0,
+      "credit": 40.0,
+      "cpu": 0.796,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.221
+    },
+    {
+      "carbonIntensity": 63.0,
+      "credit": -1.22,
+      "cpu": 0.981,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.358
+    },
+    {
+      "carbonIntensity": 62.0,
+      "credit": 0.76,
+      "cpu": 0.778,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.338
+    },
+    {
+      "carbonIntensity": 65.0,
+      "credit": 37.76,
+      "cpu": 0.423,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.384
+    },
+    {
+      "carbonIntensity": 71.0,
+      "credit": -20.55,
+      "cpu": 0.26,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.411
+    },
+    {
+      "carbonIntensity": 71.0,
+      "credit": 36.27,
+      "cpu": 0.662,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.371
+    },
+    {
+      "carbonIntensity": 57.0,
+      "credit": 26.0,
+      "cpu": 0.265,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.323
+    },
+    {
+      "carbonIntensity": 64.0,
+      "credit": 2.74,
+      "cpu": 0.395,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.35
+    },
+    {
+      "carbonIntensity": 56.0,
+      "credit": 28.36,
+      "cpu": 0.315,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.342
+    },
+    {
+      "carbonIntensity": 55.0,
+      "credit": 21.23,
+      "cpu": 0.433,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.341
+    },
+    {
+      "carbonIntensity": 59.0,
+      "credit": -1.9,
+      "cpu": 0.153,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.314
+    },
+    {
+      "carbonIntensity": 65.0,
+      "credit": 27.67,
+      "cpu": 0.928,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.243
+    },
+    {
+      "carbonIntensity": 61.0,
+      "credit": -2.35,
+      "cpu": 0.572,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 1,
+      "ml_prediction": 0,
+      "ml_probability": 0.403
+    },
+    {
+      "carbonIntensity": 58.0,
+      "credit": 9.61,
+      "cpu": 0.891,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.264
+    },
+    {
+      "carbonIntensity": 58.0,
+      "credit": 7.78,
+      "cpu": 0.739,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.348
+    },
+    {
+      "carbonIntensity": 63.0,
+      "credit": 40.0,
+      "cpu": 0.943,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.171
+    },
+    {
+      "carbonIntensity": 67.0,
+      "credit": 40.0,
+      "cpu": 0.471,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.242
+    },
+    {
+      "carbonIntensity": 72.0,
+      "credit": 40.0,
+      "cpu": 0.116,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.225
+    },
+    {
+      "carbonIntensity": 79.0,
+      "credit": 22.51,
+      "cpu": 0.445,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.347
+    },
+    {
+      "carbonIntensity": 77.0,
+      "credit": -18.85,
+      "cpu": 0.226,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.396
+    },
+    {
+      "carbonIntensity": 78.0,
+      "credit": 18.44,
+      "cpu": 0.816,
+      "recommendation": "WAIT",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.328
+    },
+    {
+      "carbonIntensity": 79.0,
+      "credit": 4.5,
+      "cpu": 0.69,
+      "recommendation": "WAIT",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.351
+    },
+    {
+      "carbonIntensity": 81.0,
+      "credit": -18.02,
+      "cpu": 0.473,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.467
+    },
+    {
+      "carbonIntensity": 85.0,
+      "credit": -8.69,
+      "cpu": 0.718,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.405
+    },
+    {
+      "carbonIntensity": 93.0,
+      "credit": 11.33,
+      "cpu": 0.926,
+      "recommendation": "WAIT",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.259
+    },
+    {
+      "carbonIntensity": 93.0,
+      "credit": -17.62,
+      "cpu": 0.991,
+      "recommendation": "MIGRATE_NOW",
+      "waitMinutes": 0,
+      "migrationFlag": 1,
+      "ml_prediction": 1,
+      "ml_probability": 0.843
+    },
+    {
+      "carbonIntensity": 93.0,
+      "credit": 40.0,
+      "cpu": 0.758,
+      "recommendation": "WAIT",
+      "waitMinutes": 75,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.239
+    },
+    {
+      "carbonIntensity": 98.0,
+      "credit": 24.43,
+      "cpu": 0.274,
+      "recommendation": "WAIT",
+      "waitMinutes": 75,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.345
+    },
+    {
+      "carbonIntensity": 100.0,
+      "credit": 23.47,
+      "cpu": 0.846,
+      "recommendation": "MONITOR",
+      "waitMinutes": 30,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.332
+    },
+    {
+      "carbonIntensity": 101.0,
+      "credit": -0.17,
+      "cpu": 0.058,
+      "recommendation": "MONITOR",
+      "waitMinutes": 45,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.242
+    },
+    {
+      "carbonIntensity": 99.0,
+      "credit": 3.14,
+      "cpu": 0.052,
+      "recommendation": "WAIT",
+      "waitMinutes": 75,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.24
+    },
+    {
+      "carbonIntensity": 90.0,
+      "credit": 17.24,
+      "cpu": 0.368,
+      "recommendation": "WAIT",
+      "waitMinutes": 75,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.35
+    },
+    {
+      "carbonIntensity": 86.0,
+      "credit": -20.16,
+      "cpu": 0.392,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.467
+    },
+    {
+      "carbonIntensity": 82.0,
+      "credit": -21.45,
+      "cpu": 0.964,
+      "recommendation": "MIGRATE_NOW",
+      "waitMinutes": 0,
+      "migrationFlag": 1,
+      "ml_prediction": 1,
+      "ml_probability": 0.859
+    },
+    {
+      "carbonIntensity": 72.0,
+      "credit": -11.0,
+      "cpu": 0.534,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.396
+    },
+    {
+      "carbonIntensity": 66.0,
+      "credit": 4.52,
+      "cpu": 0.615,
+      "recommendation": "WAIT",
+      "waitMinutes": 90,
+      "migrationFlag": 1,
+      "ml_prediction": 0,
+      "ml_probability": 0.35
+    },
+    {
+      "carbonIntensity": 59.0,
+      "credit": 38.25,
+      "cpu": 0.767,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 1,
+      "ml_prediction": 0,
+      "ml_probability": 0.382
+    },
+    {
+      "carbonIntensity": 61.0,
+      "credit": 38.32,
+      "cpu": 0.133,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.309
+    },
+    {
+      "carbonIntensity": 63.0,
+      "credit": -7.37,
+      "cpu": 0.881,
+      "recommendation": "MONITOR",
+      "waitMinutes": 60,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.37
+    },
+    {
+      "carbonIntensity": 63.0,
+      "credit": 25.48,
+      "cpu": 0.779,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.332
+    },
+    {
+      "carbonIntensity": 65.0,
+      "credit": 40.0,
+      "cpu": 0.972,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.164
+    },
+    {
+      "carbonIntensity": 62.0,
+      "credit": 40.0,
+      "cpu": 0.337,
+      "recommendation": "WAIT",
+      "waitMinutes": 120,
+      "migrationFlag": 0,
+      "ml_prediction": 0,
+      "ml_probability": 0.24
+    }
+  ]
+}
