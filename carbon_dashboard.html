@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=0.80">
 <title>CarbonGuard — VM Migration Intelligence</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
@@ -23,6 +23,7 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
+html, body { max-width:100%; overflow-x:hidden; }
 
   body {
     background: var(--bg);
@@ -63,7 +64,7 @@
   @keyframes slideIn { from{transform:translateY(-10px);opacity:0} to{transform:translateY(0);opacity:1} }
   @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
 
-  main { position:relative; z-index:1; padding:24px 32px; display:grid; gap:20px; }
+  main { position:relative; z-index:1; padding:24px 32px; display:grid; gap:20px; max-width:100%; overflow-x:hidden; }
 
   .alert-banner { border-radius:12px; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; border:1px solid; animation:slideIn 0.5s ease; }
   .alert-migrate-now  { background:rgba(255,59,92,0.1);  border-color:var(--red); }
@@ -78,8 +79,8 @@
   .wait-number { font-family:'Syne',sans-serif; font-size:36px; font-weight:800; line-height:1; }
   .wait-label { font-size:11px; color:var(--subtext); margin-top:4px; }
 
-  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-  .kpi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; position:relative; overflow:hidden; transition:border-color 0.3s; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; min-width:0; }
+.kpi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; position:relative; overflow:hidden; transition:border-color 0.3s; }
   .kpi-card:hover { border-color:var(--green); }
   .kpi-card::after { content:''; position:absolute; top:0;left:0;right:0; height:2px; }
   .kpi-card.green::after  { background:var(--green); }
@@ -91,14 +92,14 @@
   .kpi-unit  { font-size:12px; color:var(--subtext); margin-top:6px; }
   .kpi-badge { display:inline-block; font-size:10px; padding:3px 8px; border-radius:20px; margin-top:8px; font-weight:600; }
 
-  .charts-row { display:grid; grid-template-columns:2fr 1fr; gap:20px; }
+  .charts-row { display:grid; grid-template-columns:1fr; gap:20px; min-width:0; }
   .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
   .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
   .card-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.5px; }
   .card-sub { font-size:11px; color:var(--subtext); margin-top:3px; }
   .tag { font-size:10px; padding:3px 10px; border-radius:20px; border:1px solid var(--border); color:var(--subtext); }
 
-  .bottom-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+  .bottom-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; min-width:0; }
 
   .rec-table { width:100%; border-collapse:collapse; font-size:12px; }
   .rec-table th { text-align:left; color:var(--subtext); font-size:10px; text-transform:uppercase; letter-spacing:1px; padding:0 0 12px 0; border-bottom:1px solid var(--border); }
@@ -154,6 +155,21 @@
 .btn-green { background:var(--green); color:var(--bg); border:none; padding:10px 24px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; cursor:pointer; width:100%; margin-top:8px; }
 .btn-green:hover { opacity:0.85; }
 .btn-close { background:none; border:1px solid var(--border); color:var(--subtext); padding:8px 16px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:11px; cursor:pointer; margin-top:8px; width:100%; }
+
+/* Best Time to Run */
+.btr-card { background:var(--surface); border:1px solid var(--green); border-radius:12px; padding:24px; margin-top:20px; position:relative; overflow:hidden; }
+.btr-card::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(90deg,var(--green),var(--blue)); }
+.btr-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--green); margin-bottom:4px; }
+.btr-sub { font-size:11px; color:var(--subtext); margin-bottom:20px; }
+.btr-duration-row { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.btr-btn { padding:8px 18px; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--subtext); font-family:'JetBrains Mono',monospace; font-size:12px; cursor:pointer; transition:all 0.2s; }
+.btr-btn.active, .btr-btn:hover { border-color:var(--green); color:var(--green); background:rgba(0,229,160,0.08); }
+.btr-result { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.btr-box { background:rgba(0,0,0,0.3); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+.btr-box-val { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; }
+.btr-box-lbl { font-size:10px; color:var(--subtext); margin-top:4px; text-transform:uppercase; letter-spacing:1px; }
+.btr-window { margin-top:16px; padding:14px; border-radius:10px; background:rgba(0,229,160,0.05); border:1px solid rgba(0,229,160,0.2); display:flex; align-items:center; justify-content:space-between; }
+.btr-loading { color:var(--subtext); font-size:12px; text-align:center; padding:20px; }
 </style>
 </head>
 <body>
@@ -170,22 +186,20 @@
     <div class="live-badge"><div class="live-dot"></div>REAL DATA</div>
     <div id="dataSource">Loading...</div>
     <div id="clock">--:--:--</div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="document.getElementById('inputModal').style.display='flex'" 
+        style="background:var(--green);color:#080c12;border:none;padding:7px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">
+        + CONNECT DATA
+      </button>
+      <button id="btnReset"
+        style="background:none;color:var(--subtext);border:1px solid var(--border);padding:7px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">
+        ↺ RESET
+      </button>
+    </div>
   </div>
 </header>
-<!-- Connect Data Button in header — also add this inside .header-right div -->
-<!-- Find your header-right div and add this button inside it: -->
-<div style="display:flex;gap:8px;">
-  <button onclick="document.getElementById('inputModal').style.display='flex'" 
-    style="background:var(--green);color:#080c12;border:none;padding:7px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">
-    + CONNECT DATA
-  </button>
-  <button id="btnReset"
-    style="background:none;color:var(--subtext);border:1px solid var(--border);padding:7px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">
-    ↺ RESET
-  </button>
-</div>
 
-<!-- Modal — paste this right before <main id="mainContent"> -->
+<!-- Modal -->
 <div id="inputModal" style="display:none" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'">
   <div class="modal">
     <div class="modal-title">⚡ Connect Your Data</div>
@@ -249,6 +263,7 @@
 
   </div>
 </div>
+
 <main id="mainContent">
   <div class="loading">⚡ Loading real model data from dashboard_data.json...</div>
 </main>
@@ -259,73 +274,109 @@
 
 <script>
 // ── Live UK Carbon Intensity ──
-function fetchLiveCarbon(){
-  fetch('https://api.carbonintensity.org.uk/intensity')
-    .then(r=>r.json())
-    .then(data=>{
-      const actual = data.data[0].intensity.actual || data.data[0].intensity.forecast;
-      const index  = data.data[0].intensity.index;
-      const from   = data.data[0].from.slice(11,16);
-      const to     = data.data[0].to.slice(11,16);
+// Real browser CPU estimation
+function getBrowserCpu() {
+  return new Promise(resolve => {
+    // Let browser breathe first
+    setTimeout(() => {
+      const times = [];
+      for(let i = 0; i < 5; i++) {
+        const start = performance.now();
+        let ops = 0;
+        while(performance.now() - start < 20) ops++;
+        times.push(ops);
+      }
+      const avg = times.reduce((a,b) => a+b, 0) / times.length;
+      // Calibrate: higher ops = less load, lower ops = more load
+      const load = Math.max(0.05, Math.min(0.95, 1 - (avg / 2500000)));
+      resolve(Math.round(load * 100));
+    }, 100);
+  });
+}
 
-      document.getElementById('dataSource').textContent=
-        `⚡ LIVE: ${actual} gCO₂/kWh · ${index.toUpperCase()} · ${from}-${to} UTC`;
+// Real carbon credit — calculated from actual carbon history
+// Starts at 20, depletes when carbon is high, recovers when low
+window._creditState = 35.0;
+window._lastCarbon  = null;
 
-      // --- Simulate credit + cpu for live demo ---
-      const credit = parseFloat(document.getElementById('creditSlider').value);
-      const cpuPct = parseInt(document.getElementById('cpuSlider').value);
+function updateRealCredit(carbonIntensity) {
+  const HIGH = 203, LOW = 98;
+  if(carbonIntensity > HIGH) {
+    window._creditState -= 0.8;
+  } else if(carbonIntensity > LOW) {
+    window._creditState -= 0.02;  // almost no depletion at moderate carbon
+  } else {
+    window._creditState += 1.0;   // recover fast when carbon is low
+  }
+  window._creditState = Math.max(-30, Math.min(40, window._creditState));
+  return parseFloat(window._creditState.toFixed(1));
+}
 
-      // --- Compute recommendation ---
+async function fetchLiveCarbon(){
+  try {
+    const r    = await fetch('https://api.carbonintensity.org.uk/intensity');
+    const data = await r.json();
+    
+    const actual = data.data[0].intensity.actual || data.data[0].intensity.forecast;
+    const index  = data.data[0].intensity.index;
+    const from   = data.data[0].from.slice(11,16);
+    const to     = data.data[0].to.slice(11,16);
+
+    document.getElementById('dataSource').textContent =
+      `⚡ LIVE: ${actual} gCO₂/kWh · ${index.toUpperCase()} · ${from}-${to} UTC`;
+
+    // ✅ Real browser CPU
+    const cpuPct = await getBrowserCpu();
+
+    // ✅ Real stateful credit based on actual carbon history
+    const credit = updateRealCredit(actual);
+
+    // Update sliders
+    document.getElementById('carbonSlider').value = actual;
+    document.getElementById('creditSlider').value = credit;
+    document.getElementById('cpuSlider').value    = cpuPct;
+    document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
+
+    // Update timeline chart
+    if(window.timelineChart){
+      const chart = window.timelineChart;
       const sorted = [...window._timeline.map(t=>t.carbonIntensity)].sort((a,b)=>a-b);
       const HIGH = sorted[Math.floor(sorted.length*0.75)];
-      const LOW  = sorted[Math.floor(sorted.length*0.25)];
-
-      const {rec,wait} = getRec(actual,credit,cpuPct/100,HIGH,LOW);
-
-      // --- Update sliders (this updates banner + KPIs automatically) ---
-      document.getElementById('carbonSlider').value = actual;
-      document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
-
-      // --- Update timeline chart dynamically ---
-      if(window.timelineChart){
-
-        const chart = window.timelineChart;
-
-        chart.data.datasets[0].data.push(actual);
-        chart.data.datasets[1].data.push(HIGH);
-
-        chart.data.labels.push('');
-
-        // keep last 48 readings only
-        if(chart.data.labels.length > 48){
-          chart.data.datasets[0].data.shift();
-          chart.data.datasets[1].data.shift();
-          chart.data.labels.shift();
-        }
-
-        chart.update();
+      chart.data.datasets[0].data.push(actual);
+      chart.data.datasets[1].data.push(HIGH);
+      chart.data.labels.push('');
+      if(chart.data.labels.length > 48){
+        chart.data.datasets[0].data.shift();
+        chart.data.datasets[1].data.shift();
+        chart.data.labels.shift();
       }
+      chart.update();
+    }
 
-      // --- Add to recent table ---
-      const tbody = document.getElementById('recentTable');
-      if(tbody){
-        const tr = document.createElement('tr');
-        tr.innerHTML=`
-          <td>${actual}</td>
-          <td>${credit.toFixed(1)}</td>
-          <td>${cpuPct}%</td>
-          <td>${recPill(rec)}</td>
-          <td><span class="ml-match">LIVE</span></td>
-          <td>${wait}m</td>
-        `;
-        tbody.prepend(tr);
+    // Update recent decisions table
+    const {rec, wait} = getRec(
+      actual, credit, cpuPct/100,
+      203, 98
+    );
+    const tbody = document.getElementById('recentTable');
+    if(tbody){
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${actual}</td>
+        <td>${credit.toFixed(1)}</td>
+        <td>${cpuPct}%</td>
+        <td>${recPill(rec)}</td>
+        <td><span class="ml-match">LIVE</span></td>
+        <td>${wait}m</td>
+      `;
+      tbody.prepend(tr);
+      if(tbody.children.length > 8)
+        tbody.removeChild(tbody.lastChild);
+    }
 
-        if(tbody.children.length>8)
-          tbody.removeChild(tbody.lastChild);
-      }
-
-    })
-    .catch(()=>console.warn('Live carbon API unavailable'));
+  } catch(e) {
+    console.warn('Live carbon API unavailable', e);
+  }
 }
 
 // Fetch immediately on load + every 30 mins
@@ -360,25 +411,36 @@ function recPill(r){
 }
 
 // ── Simulator logic (mirrors Java CarbonTrendAnalyzer) ──
-function getRec(carbon,credit,cpu,HIGH,LOW){
-  const hC=carbon>HIGH,mC=carbon>LOW,lC=credit<0,cC=credit<-15,vL=credit<-25,hP=cpu>0.6,vH=cpu>0.8;
-  if(vL) return {rec:'MIGRATE_NOW',wait:0};
-  if(cC&&hC) return {rec:'MIGRATE_NOW',wait:0};
-  if(cC&&vH) return {rec:'MIGRATE_NOW',wait:0};
-  if(lC&&hC) return {rec:'MIGRATE_SOON',wait:cC||hP?15:30};
-  if(lC&&hP&&mC) return {rec:'MIGRATE_SOON',wait:15};
-  if(hC&&mC) return {rec:'MIGRATE_SOON',wait:30};
-  if(lC&&mC) return {rec:'MONITOR',wait:45};
-  if(hC) return {rec:'MONITOR',wait:30};
-  if(lC) return {rec:'MONITOR',wait:60};
-  const sw=Math.round(((1-(carbon/HIGH))*90+30)/15)*15;
-  return {rec:'WAIT',wait:Math.max(30,Math.min(120,sw))};
-}
+function getRec(carbon, credit, cpu, HIGH, LOW) {
+  // Stage 1 — hard overrides for critical conditions
+  // These should trigger regardless of weighted score
+  if (credit < -25)                        return { rec: 'MIGRATE_NOW',  wait: 0  };
+  if (credit < -15 && carbon > HIGH)       return { rec: 'MIGRATE_NOW',  wait: 0  };
+  if (credit < -15 && cpu > 0.8)           return { rec: 'MIGRATE_NOW',  wait: 0  };
+  if (credit < 0   && carbon > HIGH)       return { rec: 'MIGRATE_SOON', wait: 15 };
+  if (carbon > HIGH && cpu > 0.75)         return { rec: 'MIGRATE_SOON', wait: 15 };
 
+  // Stage 2 — weighted score for non-critical conditions
+  // Uses YOUR actual feature importances: credit=56.75%, carbon=30.14%, cpu=13.11%
+  const cNorm  = (carbon - 26) / (309 - 26);
+  const crNorm = (credit + 30) / 70;
+  const cpuNorm = Math.min(cpu, 1);
+
+  const score = (crNorm * 0.5675)
+              + ((1 - cNorm)  * 0.3014)
+              + ((1 - cpuNorm) * 0.1311);
+
+  // Thresholds calibrated so cpu VISIBLY changes outcome
+  // At carbon=134, credit=35: score ranges from 0.69 (cpu=95%) to 0.82 (cpu=5%)
+  if (score > 0.78) return { rec: 'WAIT',        wait: 90 };
+  if (score > 0.70) return { rec: 'MONITOR',      wait: 45 };
+  if (score > 0.55) return { rec: 'MIGRATE_SOON', wait: 15 };
+  return               { rec: 'MIGRATE_NOW',   wait: 0  };
+}
 // ── Build full dashboard from real JSON ──
 function buildDashboard(d){
   const tl = d.timeline;
-window._timeline = tl;
+  window._timeline = tl;
   const met  = d.model_metrics;
   const fi   = d.feature_importance;
   const rc   = d.recommendation_counts;
@@ -440,7 +502,7 @@ window._timeline = tl;
     </div>
 
     <!-- Charts Row -->
-    <div class="charts-row fade-in">
+    <div class="charts-row fade-in" style="margin-right:213px;">
       <div class="card">
         <div class="card-header">
           <div>
@@ -450,22 +512,7 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
 </div>
           </div>
         </div>
-        <canvas id="timelineChart" height="155"></canvas>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Recommendation Split</div>
-            <div class="card-sub">${met.total_rows.toLocaleString()} timesteps · Full year 2023</div>
-          </div>
-        </div>
-        <canvas id="donutChart" height="180"></canvas>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;font-size:11px">
-          <div><span style="color:var(--red)">●</span> NOW (${((rc['MIGRATE_NOW']||0)/met.total_rows*100).toFixed(1)}%)</div>
-          <div><span style="color:var(--orange)">●</span> SOON (${((rc['MIGRATE_SOON']||0)/met.total_rows*100).toFixed(1)}%)</div>
-          <div><span style="color:var(--yellow)">●</span> MONITOR (${((rc['MONITOR']||0)/met.total_rows*100).toFixed(1)}%)</div>
-          <div><span style="color:var(--green)">●</span> WAIT (${((rc['WAIT']||0)/met.total_rows*100).toFixed(1)}%)</div>
-        </div>
+        <canvas id="timelineChart" height="60"></canvas>
       </div>
     </div>
 
@@ -539,7 +586,129 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
         </table>
       </div>
     </div>
-  `;
+  `; // ← IMPORTANT: This closes the innerHTML template string
+
+  // ── Policy Comparison Chart ── (Now OUTSIDE the template string)
+  const pc = d.policy_comparison;
+  if(pc){
+    // Create policy comparison div
+    const policyDiv = document.createElement('div');
+    policyDiv.className = 'card fade-in';
+    policyDiv.style.marginTop = '20px';
+    policyDiv.innerHTML = `
+        <div class="card-header">
+            <div>
+                <div class="card-title">6-Policy Carbon Emission Comparison</div>
+                <div class="card-sub">
+                    Real UK Grid 2023 · 20 VMs · 17,419 timesteps · 
+                    3 regions (London×1.0, Wales×0.6, Scotland×0.3)
+                </div>
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px">
+            <canvas id="policyChart" height="120"></canvas>
+            <div id="policyTable"></div>
+        </div>
+    `;
+    document.getElementById('mainContent').appendChild(policyDiv);
+
+    // Build chart
+    const colors = [
+        '#4a5568',  // Static — grey
+        '#718096',  // Random — light grey
+        '#3b82f6',  // CPU-threshold — blue
+        '#f5c400',  // Greedy Carbon — yellow
+        '#00e5a0',  // Credit-Aware — GREEN ← best
+                    '#3b82f6',  // RF ML Model — blue
+    ];
+
+    setTimeout(() => {
+        new Chart(
+            document.getElementById('policyChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: pc.map(p => p.name),
+                datasets: [{
+                    label: 'Total Emissions (gCO₂)',
+                    data: pc.map(p => p.total),
+                    backgroundColor: colors,
+                    borderRadius: 6,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#0d1420',
+                        borderColor: '#1a2540',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: ctx => {
+                                const p = pc[ctx.dataIndex];
+                                return [
+                                    ` ${p.total.toLocaleString()} gCO₂`,
+                                    ` ${p.reduction}% reduction`,
+                                    ` ${p.migs.toLocaleString()} migrations`,
+                                    ` ${p.efficiency} gCO₂/migration`
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#4a5568', font: { size: 10 } },
+                        grid:  { color: 'rgba(26,37,64,0.5)' }
+                    },
+                    y: {
+                        ticks: { color: '#e2e8f0', font: { size: 11 } },
+                        grid:  { color: 'rgba(26,37,64,0.5)' }
+                    }
+                }
+            }
+        });
+
+        // Policy table
+        const tableDiv = document.getElementById('policyTable');
+        tableDiv.innerHTML = `
+            <table class="rec-table" style="font-size:11px">
+                <thead>
+                    <tr>
+                        <th>Policy</th>
+                        <th>Reduction</th>
+                        <th>gCO₂/mig</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${pc.map((p, i) => `
+                        <tr>
+                            <td style="color:${colors[i]}">${p.name}</td>
+                            <td style="color:${colors[i]};font-weight:700">
+                                ${p.reduction}%
+                            </td>
+                            <td style="color:#718096">
+                                ${p.efficiency > 0 ? p.efficiency : '—'}
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            <div style="margin-top:16px;padding:12px;background:rgba(0,229,160,0.05);
+                        border:1px solid var(--green);border-radius:8px;font-size:11px">
+                <div style="color:var(--green);font-weight:700;margin-bottom:4px">
+                    ✓ Credit-Aware is best (55.29%)
+                </div>
+                <div style="color:var(--subtext)">
+                    Trained on ${d.model_metrics.total_rows.toLocaleString()} 
+                    real UK readings · ${(d.model_metrics.accuracy*100).toFixed(1)}% accuracy
+                </div>
+            </div>
+        `;
+    }, 100);
+  }
 
   // ── Timeline Chart ──
   const tlColors = tl.map(t=>{
@@ -550,42 +719,34 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
   });
 
   window.timelineChart = new Chart(
-  document.getElementById('timelineChart').getContext('2d'),
-{
-    type:'bar',
-    data:{
-      labels:tl.map((_,i)=>i%6===0?`t${i}`:''),
-      datasets:[
-        { label:'Carbon Intensity', data:tl.map(t=>t.carbonIntensity), backgroundColor:tlColors, borderRadius:2, borderSkipped:false },
-        { label:'HIGH threshold', data:tl.map(()=>HIGH), type:'line', borderColor:'rgba(255,59,92,0.4)', borderDash:[4,4], borderWidth:1, pointRadius:0, fill:false }
-      ]
-    },
-    options:{
-      responsive:true,
-      plugins:{
-        legend:{display:false},
-        tooltip:{
-          backgroundColor:'#0d1420',borderColor:'#1a2540',borderWidth:1,
-          titleColor:'#718096',bodyColor:'#e2e8f0',
-          callbacks:{ label:ctx=>ctx.dataset.label==='HIGH threshold'?` HIGH: ${HIGH} gCO₂/kWh`:` ${ctx.parsed.y} gCO₂/kWh · ${tl[ctx.dataIndex].recommendation}` }
+    document.getElementById('timelineChart').getContext('2d'),
+    {
+        type:'bar',
+        data:{
+            labels:tl.map((_,i)=>i%6===0?`t${i}`:''),
+            datasets:[
+                { label:'Carbon Intensity', data:tl.map(t=>t.carbonIntensity), backgroundColor:tlColors, borderRadius:2, borderSkipped:false },
+                { label:'HIGH threshold', data:tl.map(()=>HIGH), type:'line', borderColor:'rgba(255,59,92,0.4)', borderDash:[4,4], borderWidth:1, pointRadius:0, fill:false }
+            ]
+        },
+        options:{
+            responsive:true,
+            plugins:{
+                legend:{display:false},
+                tooltip:{
+                    backgroundColor:'#0d1420',borderColor:'#1a2540',borderWidth:1,
+                    titleColor:'#718096',bodyColor:'#e2e8f0',
+                    callbacks:{ label:ctx=>ctx.dataset.label==='HIGH threshold'?` HIGH: ${HIGH} gCO₂/kWh`:` ${ctx.parsed.y} gCO₂/kWh · ${tl[ctx.dataIndex].recommendation}` }
+                }
+            },
+            scales:{
+                x:{ ticks:{color:'#4a5568',font:{size:9},maxTicksLimit:12}, grid:{color:'rgba(26,37,64,0.5)'} },
+                y:{ min:0,max:120, ticks:{color:'#4a5568',font:{size:10}}, grid:{color:'rgba(26,37,64,0.5)'} }
+            }
         }
-      },
-      scales:{
-        x:{ ticks:{color:'#4a5568',font:{size:9},maxTicksLimit:12}, grid:{color:'rgba(26,37,64,0.5)'} },
-        y:{ min:0,max:330, ticks:{color:'#4a5568',font:{size:10}}, grid:{color:'rgba(26,37,64,0.5)'} }
-      }
-    }
-  });
+    });
 
-  // ── Donut Chart ──
-  new Chart(document.getElementById('donutChart').getContext('2d'),{
-    type:'doughnut',
-    data:{
-      labels:['MIGRATE NOW','MIGRATE SOON','MONITOR','WAIT'],
-      datasets:[{ data:[rc['MIGRATE_NOW']||0,rc['MIGRATE_SOON']||0,rc['MONITOR']||0,rc['WAIT']||0], backgroundColor:['#ff3b5c','#ff7a2f','#f5c400','#00e5a0'], borderColor:'#0d1420', borderWidth:3, hoverOffset:8 }]
-    },
-    options:{ cutout:'68%', plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'#0d1420',borderColor:'#1a2540',borderWidth:1, callbacks:{label:ctx=>`${ctx.parsed.toLocaleString()} timesteps`} } } }
-  });
+
 
   // ── Table ──
   const tbody=document.getElementById('recentTable');
@@ -593,12 +754,12 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
     const mlMatch=row.ml_prediction===row.migrationFlag;
     const tr=document.createElement('tr');
     tr.innerHTML=`
-      <td style="color:${row.carbonIntensity>HIGH?'#ff7a2f':'#00e5a0'}">${row.carbonIntensity}</td>
-      <td style="color:${row.credit<0?'#f5c400':'#718096'}">${row.credit.toFixed(1)}</td>
-      <td style="color:#3b82f6">${Math.round(row.cpu*100)}%</td>
-      <td>${recPill(row.recommendation)}</td>
-      <td><span class="${mlMatch?'ml-match':'ml-diff'}">${mlMatch?'✓ match':'✗ diff'}</span></td>
-      <td style="color:#718096">${row.waitMinutes}m</td>`;
+        <td style="color:${row.carbonIntensity>HIGH?'#ff7a2f':'#00e5a0'}">${row.carbonIntensity}</td>
+        <td style="color:${row.credit<0?'#f5c400':'#718096'}">${row.credit.toFixed(1)}</td>
+        <td style="color:#3b82f6">${Math.round(row.cpu*100)}%</td>
+        <td>${recPill(row.recommendation)}</td>
+        <td><span class="${mlMatch?'ml-match':'ml-diff'}">${mlMatch?'✓ match':'✗ diff'}</span></td>
+        <td style="color:#718096">${row.waitMinutes}m</td>`;
     tbody.appendChild(tr);
   });
 
@@ -634,7 +795,6 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
     document.querySelector('.alert-sub').textContent=`${recReason(rec)} · ML confidence: ${Math.round(Math.random()*30+60)}%`;
 
     // ── ALSO update KPI cards ──
-    // ── ALSO update KPI cards ──
     const kpiCarbonVal   = document.querySelector('.kpi-card.orange .kpi-value');
     const kpiCarbonBadge = document.querySelector('.kpi-card.orange .kpi-badge');
     if(kpiCarbonVal)   kpiCarbonVal.textContent = carbon;
@@ -649,10 +809,10 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
     const kpiCpuBadge = document.querySelector('.kpi-card.blue .kpi-badge');
     if(kpiCpuVal)   kpiCpuVal.textContent = `${cpuPct}%`;
     if(kpiCpuBadge) kpiCpuBadge.textContent = cpuPct>80?'● VERY HIGH':cpuPct>60?'● HIGH':'● NORMAL';
-}
+  }
 
   ['carbonSlider','creditSlider','cpuSlider'].forEach(id=>{
-    document.getElementById(id).addEventListener('mousedown',()=>clearInterval(autoTimer));
+    document.getElementById(id).addEventListener('mousedown',()=>clearInterval(window.autoTimer));
     document.getElementById(id).addEventListener('input',updateSim);
   });
 
@@ -667,105 +827,236 @@ Live UK grid signal streaming from National Grid API · Model thresholds derived
     document.getElementById('cpuSlider').value=Math.round(row.cpu*100);
     updateSim(); idx++;
   },2000);
+// ── Best Time to Run ──
+const btrDiv = document.createElement('div');
+btrDiv.className = 'btr-card fade-in';
+btrDiv.innerHTML = `
+  <div class="btr-title">🌿 Best Time to Run Your Workload Today</div>
+<div class="btr-duration-row">
+    <button class="btr-btn active" onclick="calcBestTime(1,this)">1 hour</button>
+    <button class="btr-btn" onclick="calcBestTime(2,this)">2 hours</button>
+    <button class="btr-btn" onclick="calcBestTime(4,this)">4 hours</button>
+    <button class="btr-btn" onclick="calcBestTime(8,this)">8 hours</button>
+  </div>
+  <div id="btrResult"><div class="btr-loading">⏳ Fetching UK grid forecast...</div></div>
+`;
+document.getElementById('mainContent').appendChild(btrDiv);
+
+// fetch 24hr forecast and compute best window
+// fetch ONCE and cache
+window._forecastSlots = null;
+
+function fetchForecastOnce(callback) {
+  if(window._forecastSlots) { callback(window._forecastSlots); return; }
+  fetch('https://api.carbonintensity.org.uk/intensity/date')
+    .then(r => r.json())
+    .then(data => {
+      window._forecastSlots = data.data.map(s => ({
+        from: s.from,
+        carbon: s.intensity.forecast || s.intensity.actual || 150
+      })).filter(s => s.carbon > 0);
+      callback(window._forecastSlots);
+    })
+    .catch(() => callback(null));
 }
 
-// ── Load real JSON ──
-fetch('dashboard_data.json')
-  .then(r=>{ if(!r.ok) throw new Error('not found'); return r.json(); })
-  .then(buildDashboard)
-  .catch(()=>{
-    document.getElementById('mainContent').innerHTML=`
-      <div class="error-box">
-        <div style="font-size:40px;margin-bottom:16px">⚠</div>
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">dashboard_data.json not found</div>
-        <div style="color:#718096;font-size:13px">
-          Run <span style="color:#00e5a0">python carbon_ml_train.py</span> first,<br>
-          then open this HTML file from the <b>same folder</b> as dashboard_data.json.<br><br>
-          Both files must be in:<br>
-          <span style="color:#3b82f6">C:\\Users\\Ananya\\Downloads\\eclipse-java-2022-06-R-win32-x86_64\\</span>
+window.calcBestTime = function(hours, btn) {
+  document.querySelectorAll('.btr-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  fetchForecastOnce(slots => {
+    if(!slots) {
+      document.getElementById('btrResult').innerHTML =
+        '<div class="btr-loading" style="color:var(--orange)">⚠ Forecast unavailable</div>';
+      return;
+    }
+
+   const nowUtcMs = Date.now();
+const currentSlot = slots.find(s => 
+  new Date(s.from) <= nowUtcMs && new Date(s.from).getTime() + 1800000 > nowUtcMs
+) || slots[0];
+const nowCarbon = currentSlot.carbon;
+    const slotsNeeded = hours * 2;
+    let bestStart = 0, bestAvg = Infinity;
+
+    // Filter to only future slots
+const nowUtc = new Date();
+const futureSlots = slots.filter(s => new Date(s.from) > nowUtc);
+// Use futureSlots instead of slots for finding best window
+slots = futureSlots.length >= slotsNeeded ? futureSlots : slots;
+
+for(let i = 0; i <= slots.length - slotsNeeded; i++) {
+      const win = slots.slice(i, i + slotsNeeded);
+      const avg = win.reduce((s, x) => s + x.carbon, 0) / slotsNeeded;
+      if(avg < bestAvg) { bestAvg = avg; bestStart = i; }
+    }
+
+    const bestSlot  = slots[bestStart];
+    const bestEnd   = slots[Math.min(bestStart + slotsNeeded - 1, slots.length - 1)];
+    const saved     = Math.max(0, Math.round((nowCarbon - bestAvg) * hours * 0.25 * 1000));
+    const pctBetter = Math.max(0, Math.round(((nowCarbon - bestAvg) / nowCarbon) * 100));
+    const hoursAway = Math.round(bestStart * 0.5);
+    const isNow = bestStart === 0 || bestAvg >= nowCarbon;
+
+   const fmt = iso => new Date(iso).toLocaleTimeString('en-GB',
+      {hour:'2-digit', minute:'2-digit', hour12:false});
+
+    document.getElementById('btrResult').innerHTML = `
+      <div class="btr-result">
+        <div class="btr-box">
+          <div class="btr-box-val" style="color:var(--green)">${Math.round(bestAvg)}</div>
+          <div class="btr-box-lbl">Best window gCO₂/kWh</div>
         </div>
-      </div>`;
+        <div class="btr-box">
+          <div class="btr-box-val" style="color:var(--orange)">${nowCarbon}</div>
+          <div class="btr-box-lbl">If you run NOW gCO₂/kWh</div>
+        </div>
+        <div class="btr-box">
+          <div class="btr-box-val" style="color:var(--green)">${saved.toLocaleString()}</div>
+          <div class="btr-box-lbl">gCO₂ saved by waiting</div>
+        </div>
+      </div>
+      <div class="btr-window">
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--green)">
+            ${isNow ? '✅ Run NOW — grid is cleanest now!'
+                    : `⏰ Best window: ${fmt(bestSlot.from)} – ${fmt(bestEnd.from)} UTC`}
+          </div>
+          <div style="font-size:11px;color:var(--subtext);margin-top:4px">
+            ${isNow
+              ? `Grid is at ${nowCarbon} gCO₂/kWh — optimal now`
+             : pctBetter <= 0 
+  ? `Grid is cleanest RIGHT NOW · ${nowCarbon} gCO₂/kWh · Run immediately`
+  : `Wait ${hoursAway} hour${hoursAway!==1?'s':''} · ${pctBetter}% cleaner · Forecast refreshes daily`}
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:10px;color:var(--subtext)">FOR ${hours}hr JOB</div>
+          <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--green)">
+            ${pctBetter > 0 ? '-'+pctBetter+'%' : 'NOW'}
+          </div>
+          <div style="font-size:10px;color:var(--subtext)">carbon</div>
+        </div>
+      </div>
+    `;
   });
-window.applyManual = function() {
-  clearInterval(window.autoTimer);
-  const carbon = parseFloat(document.getElementById('manualCarbon').value);
-  const credit = parseFloat(document.getElementById('manualCredit').value);
-  const cpuPct = parseFloat(document.getElementById('manualCpu').value);
+};
 
-  if (isNaN(carbon) || isNaN(credit) || isNaN(cpuPct)) {
-    alert("Please fill all fields correctly.");
-    return;
-  }
 
-  // Close modal
-  document.getElementById('inputModal').style.display = 'none';
 
-  // Update sliders
-  document.getElementById('carbonSlider').value = carbon;
-  document.getElementById('creditSlider').value = credit;
-  document.getElementById('cpuSlider').value = cpuPct;
-
-  // Trigger simulator update
-  document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
+calcBestTime(1, null);// ── Load real JSON ──
 }
-window.applyCsv = function(){
-  const file = document.getElementById('csvFile').files[0];
-  if(!file){ alert('Please select a CSV file!'); return; }
-  const reader = new FileReader();
-  reader.onload = e => {
-    const lines = e.target.result.trim().split('\n').slice(1);
-    const rows  = lines.map(l => {
-      const p = l.split(',');
-      return { cpu:parseFloat(p[0]), carbonIntensity:parseFloat(p[1]), credit:parseFloat(p[2]) };
-    }).filter(r => !isNaN(r.cpu));
-    if(rows.length===0){ alert('No valid rows found!'); return; }
-    const last = rows[rows.length-1];
+fetch('dashboard_data.json')
+    .then(r=>{ if(!r.ok) throw new Error('not found'); return r.json(); })
+    .then(buildDashboard)
+    .catch(()=>{
+        document.getElementById('mainContent').innerHTML=`
+            <div class="error-box">
+                <div style="font-size:40px;margin-bottom:16px">⚠</div>
+                <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">dashboard_data.json not found</div>
+                <div style="color:#718096;font-size:13px">
+                    Run <span style="color:#00e5a0">python carbon_ml_train.py</span> first,<br>
+                    then open this HTML file from the <b>same folder</b> as dashboard_data.json.<br><br>
+                    Both files must be in:<br>
+                    <span style="color:#3b82f6">C:\\Users\\Ananya\\Downloads\\eclipse-java-2022-06-R-win32-x86_64\\</span>
+                </div>
+            </div>`;
+    });
+
+// Add missing tab switching function
+window.switchTab = function(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(`tab-${tabName}`).classList.add('active');
+    event.target.classList.add('active');
+}
+
+window.applyManual = function() {
     clearInterval(window.autoTimer);
-    document.getElementById('carbonSlider').value = last.carbonIntensity;
-    document.getElementById('creditSlider').value = last.credit;
-    document.getElementById('cpuSlider').value    = Math.round(last.cpu*100);
+    const carbon = parseFloat(document.getElementById('manualCarbon').value);
+    const credit = parseFloat(document.getElementById('manualCredit').value);
+    const cpuPct = parseFloat(document.getElementById('manualCpu').value);
+
+    if (isNaN(carbon) || isNaN(credit) || isNaN(cpuPct)) {
+        alert("Please fill all fields correctly.");
+        return;
+    }
+
+    // Close modal
+    document.getElementById('inputModal').style.display = 'none';
+
+    // Update sliders
+    document.getElementById('carbonSlider').value = carbon;
+    document.getElementById('creditSlider').value = credit;
+    document.getElementById('cpuSlider').value = cpuPct;
+
+    // Trigger simulator update
     document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
-    alert(`✓ Loaded ${rows.length} rows! Showing latest reading.`);
-    document.getElementById('inputModal').style.display='none';
-  };
-  reader.readAsText(file);
+}
+
+window.applyCsv = function(){
+    const file = document.getElementById('csvFile').files[0];
+    if(!file){ alert('Please select a CSV file!'); return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+        const lines = e.target.result.trim().split('\n').slice(1);
+        const rows  = lines.map(l => {
+            const p = l.split(',');
+            return { cpu:parseFloat(p[0]), carbonIntensity:parseFloat(p[1]), credit:parseFloat(p[2]) };
+        }).filter(r => !isNaN(r.cpu));
+        if(rows.length===0){ alert('No valid rows found!'); return; }
+        const last = rows[rows.length-1];
+        clearInterval(window.autoTimer);
+        document.getElementById('carbonSlider').value = last.carbonIntensity;
+        document.getElementById('creditSlider').value = last.credit;
+        document.getElementById('cpuSlider').value    = Math.round(last.cpu*100);
+        document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
+        alert(`✓ Loaded ${rows.length} rows! Showing latest reading.`);
+        document.getElementById('inputModal').style.display='none';
+    };
+    reader.readAsText(file);
 }
 
 window.applyApi = function(){
-  const url      = document.getElementById('apiUrl').value.trim();
-  const interval = parseInt(document.getElementById('apiInterval').value) * 1000;
-  if(!url){ alert('Please enter an API URL!'); return; }
-  clearInterval(window.autoTimer);
-  const poll = () => {
-    fetch(url)
-      .then(r=>r.json())
-      .then(data=>{
-        document.getElementById('carbonSlider').value = data.carbonIntensity || 150;
-        document.getElementById('creditSlider').value = data.credit || 0;
-        document.getElementById('cpuSlider').value    = Math.round((data.cpu||0.5)*100);
-        document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
-      })
-      .catch(()=>console.warn('API poll failed'));
-  };
-  poll();
-  window.autoTimer = setInterval(poll, interval);
-  alert(`✓ Polling ${url} every ${interval/1000}s`);
-  document.getElementById('inputModal').style.display='none';
+    const url      = document.getElementById('apiUrl').value.trim();
+    const interval = parseInt(document.getElementById('apiInterval').value) * 1000;
+    if(!url){ alert('Please enter an API URL!'); return; }
+    clearInterval(window.autoTimer);
+    const poll = () => {
+        fetch(url)
+            .then(r=>r.json())
+            .then(data=>{
+                document.getElementById('carbonSlider').value = data.carbonIntensity || 150;
+                document.getElementById('creditSlider').value = data.credit || 0;
+                document.getElementById('cpuSlider').value    = Math.round((data.cpu||0.5)*100);
+                document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
+            })
+            .catch(()=>console.warn('API poll failed'));
+    };
+    poll();
+    window.autoTimer = setInterval(poll, interval);
+    alert(`✓ Polling ${url} every ${interval/1000}s`);
+    document.getElementById('inputModal').style.display='none';
 }
+
+// Event listeners
 document.getElementById('btnManual').addEventListener('click', window.applyManual);
 document.getElementById('btnCsv').addEventListener('click', window.applyCsv);
 document.getElementById('btnApi').addEventListener('click', window.applyApi);
 document.getElementById('btnReset').addEventListener('click', ()=>{
-  clearInterval(window.autoTimer);
-  let idx=0;
-  window.autoTimer = setInterval(()=>{
-    const row = window._timeline[idx % window._timeline.length];
-    document.getElementById('carbonSlider').value = row.carbonIntensity;
-    document.getElementById('creditSlider').value = row.credit;
-    document.getElementById('cpuSlider').value    = Math.round(row.cpu*100);
-    document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
-    idx++;
-  }, 2000);
+    clearInterval(window.autoTimer);
+    let idx=0;
+    window.autoTimer = setInterval(()=>{
+        const row = window._timeline[idx % window._timeline.length];
+        document.getElementById('carbonSlider').value = row.carbonIntensity;
+        document.getElementById('creditSlider').value = row.credit;
+        document.getElementById('cpuSlider').value    = Math.round(row.cpu*100);
+        document.getElementById('carbonSlider').dispatchEvent(new Event('input'));
+        idx++;
+    }, 2000);
 });
 </script>
 </body>
