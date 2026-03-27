@@ -101,34 +101,23 @@ The system integrates:
 ## Project Structure
 
 ```
-carbon-vm-migration/
+Hypervisor-Carbon-Credits/
 │
-├── simulation/
-│   ├── CarbonAwareSimulation.java     # Main CloudSim simulation
-│   ├── CarbonPolicy.java              # 6-policy scheduler logic
-│   ├── CarbonCreditManager.java       # Credit governance mechanism
-│   └── RegionConfig.java             # London / Wales / Scotland setup
+├── README.md                          # You are here
+├── carbon_dashboard.html              # Real-time decision dashboard
+├── carbon_ml_train.py                 # Random Forest ML pipeline + 6-policy benchmark + dashboard data generation
+├── dashboard_data.json               # Simulation output for dashboard
 │
-├── ml/
-│   ├── carbon_ml_train.py            # Random Forest training pipeline
-│   ├── carbon_scheduler_model.pkl    # Trained model (saved)
-│   └── smote_balancer.py            # Class imbalance handling
+└── CarbonAwareCloudMigration/
+└── src/examples/org/cloudbus/cloudsim/examples/
 │
-├── dashboard/
-│   ├── carbon_dashboard.html         # Real-time decision dashboard
-│   └── dashboard_data.json          # Simulation output for dashboard
+├── CarbonLedger/              # Carbon credit tracking logic
+├── network/                   # Network configuration
+├── power/                     # Power model components
 │
-├── data/
-│   └── uk_carbon_2023.csv           # 17,419 National Grid readings
-│
-├── outputs/
-│   ├── confusion_matrix.png
-│   ├── roc_curve.png
-│   ├── feature_importance.png
-│   ├── carbon_trace_recommendations.png
-│   └── wait_time_distribution.png
-│
-└── README.md
+├── CarbonAwareMigration.java          # Main simulation entry point
+├── CarbonAwareVmAllocationPolicy.java # Credit-governed VM placement
+├── CarbonTraceLoader.java             # UK National Grid data loader
 ```
 
 ---
